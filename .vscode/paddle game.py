@@ -37,7 +37,8 @@ ball.shapesize(stretch_wid=1, stretch_len=1)
 ball.color("pink")
 ball.penup()
 ball.goto(0,0)
-
+ball.dx=0.3
+ball.dy=0.2
 
 #function
 
@@ -74,7 +75,32 @@ def paddle_b_down():
     y -= 20
     paddleB.sety(y)
 
-
+# Keyboard
+wn.listen()
+wn.onkeypress(paddle_b_up, "o")
+wn.onkeypress(paddle_b_down, "l")
 #Gameplay
 while True:
      wn.update()
+
+    
+    # ball movement
+     ball.setx(ball.xcor() +ball.dx)
+     ball.sety(ball.ycor() +ball.dy)
+     
+    #  border
+     if ball.ycor() >290:
+         ball.sety(290)
+         ball.dy *= -1
+        
+     if ball.ycor() <-290:
+        ball.sety(-290)
+        ball.dy *= -1
+        
+     if ball.xcor() >385:
+         ball.goto(0,0)
+         ball.dx *= -1
+        
+     if ball.xcor() <-385:
+        ball.goto(0,0)
+        ball.dx *= -1
