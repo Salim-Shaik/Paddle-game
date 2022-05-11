@@ -1,11 +1,14 @@
 import turtle
 
 wn = turtle.Screen()
-wn.title("Pong")
+wn.title("PaddleBall")
 wn.bgcolor("green")
 wn.setup(width=800,height=600)
 wn.tracer(0)
 
+# score 1
+
+#score 2
 
 
 # Bat A
@@ -61,7 +64,14 @@ def paddle_a_down():
 wn.listen()
 wn.onkeypress(paddle_a_up, "e")
 wn.onkeypress(paddle_a_down, "d")
-
+# pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("red")
+pen.penup()
+pen.hideturtle()
+pen.goto(-200,230)
+soc = pen.write("Playa One: 0  Playa Two : 0", font=("Courier",24,"normal"))
 #function
 
 def paddle_b_up():
@@ -100,7 +110,14 @@ while True:
      if ball.xcor() >385:
          ball.goto(0,0)
          ball.dx *= -1
-        
      if ball.xcor() <-385:
         ball.goto(0,0)
         ball.dx *= -1
+    # // paddle and ball  
+     if (ball.xcor()>340 and ball.xcor()<350)and (ball.ycor()< paddleB.ycor()+ 60 and ball.ycor()> paddleB.ycor() - 60):
+            ball.setx(340)
+            ball.dx *= -1
+     if (ball.xcor()>-390 and ball.xcor()< -350)and (ball.ycor()< paddleA.ycor()+ 60 and ball.ycor()> paddleA.ycor() - 60):
+            ball.setx(-340)
+            ball.dx *= -1
+    
